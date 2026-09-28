@@ -4,7 +4,7 @@ Tracks the full lifecycle of government-owned infrastructure (hospitals, highway
 from planning and construction through operation, maintenance, end-of-life and decommissioning.
 
 **Stack:** React + TypeScript + Vite + Tailwind CSS · Node.js + Express + TypeScript · PostgreSQL (Supabase)
-**Deploy:** Frontend → Vercel · Backend → Render · Database → Supabase
+**Deploy:** Full Application (Frontend & Serverless Express API) → Vercel · Database → Supabase PostgreSQL
 
 ## Structure
 
@@ -34,6 +34,38 @@ infra-lifecycle/
 ## Prerequisites
 
 Node.js 20+ and npm.
+
+## Vercel Deployment (Frontend + Express Serverless API)
+
+The entire full-stack application deploys to Vercel in a single project with:
+- **Frontend:** Built with Vite to `frontend/dist` and served statically.
+- **Backend API:** Express application running as a Vercel Serverless Function via [`api/index.ts`](file:///api/index.ts) at `/api/*`.
+- **Database:** PostgreSQL on Supabase.
+
+### Vercel Project Settings
+
+- **Framework Preset:** Vite
+- **Root Directory:** `./` (Leave as repository root)
+- **Build Command:** `npm run build`
+- **Output Directory:** `frontend/dist`
+- **Install Command:** `npm install`
+
+### Required Environment Variables in Vercel
+
+Configure these in **Project Settings → Environment Variables**:
+
+| Variable Name | Required | Description / Value |
+|---|---|---|
+| `DATABASE_URL` | **Yes** | Supabase PostgreSQL Connection URI (e.g., `postgresql://postgres.[ref]:[pass]@aws-0-[region].pooler.supabase.com:6543/postgres?sslmode=require`) |
+| `JWT_SECRET` | **Yes** | Random 32+ char secret string for signing JWT authentication tokens |
+| `JWT_EXPIRES_IN` | No | Token expiration duration (default: `8h`) |
+| `NODE_ENV` | No | `production` |
+| `DATABASE_SSL` | No | `true` (default is enabled for secure connection to Supabase) |
+
+> [!NOTE]
+> Do NOT set `DATABASE_URL` or `JWT_SECRET` with a `VITE_` prefix. They must remain server-side only in Vercel environment variables.
+
+---
 
 ## Run locally
 

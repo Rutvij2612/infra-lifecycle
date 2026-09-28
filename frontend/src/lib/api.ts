@@ -1,5 +1,6 @@
-// Base URL of the REST API. Empty => same-origin "/api" (proxied by Vite in dev).
-const API_URL: string = import.meta.env.VITE_API_URL || '/api';
+// Base URL of the REST API. Default to same-origin "/api" in production (or proxied in dev).
+const rawUrl = import.meta.env.VITE_API_URL ? String(import.meta.env.VITE_API_URL).trim() : '';
+const API_URL: string = rawUrl ? rawUrl.replace(/\/+$/, '') : '/api';
 
 // ---------------------------------------------------------------- token storage
 // The JWT is kept in localStorage so a page refresh keeps the session.

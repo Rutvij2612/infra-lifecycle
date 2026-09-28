@@ -7,7 +7,9 @@ export const pool: Pool | null = env.databaseUrl
   ? new Pool({
       connectionString: env.databaseUrl,
       ssl: env.databaseSsl ? { rejectUnauthorized: false } : undefined,
-      max: 10,
+      max: 5,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 5000,
     })
   : null;
 
