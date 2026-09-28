@@ -62,17 +62,17 @@ export function AppLayout({ currentTab, onSelectTab, children }: AppLayoutProps)
     },
     ...(isAdmin
       ? [
-          {
-            id: 'users' as NavTab,
-            label: 'User Directory',
-            icon: (
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            ),
-            description: 'Staff & Role Management',
-          },
-        ]
+        {
+          id: 'users' as NavTab,
+          label: 'User Directory',
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          ),
+          description: 'Staff & Role Management',
+        },
+      ]
       : []),
   ];
 
@@ -102,7 +102,7 @@ export function AppLayout({ currentTab, onSelectTab, children }: AppLayoutProps)
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-base font-bold tracking-tight text-white">
-                      PM GatiShakti • InfraLifecycle
+                      PM BoriShakti • InfraLifecycle
                     </span>
                     <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-800/80 text-emerald-200 border border-emerald-600/40">
                       GOV INTERNAL
@@ -121,13 +121,12 @@ export function AppLayout({ currentTab, onSelectTab, children }: AppLayoutProps)
                 <div className="text-xs font-semibold text-slate-100 flex items-center justify-end gap-1.5">
                   <span>{user?.name}</span>
                   <span
-                    className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
-                      isAdmin
+                    className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${isAdmin
                         ? 'bg-purple-900 text-purple-200 border border-purple-700'
                         : isOfficer
-                        ? 'bg-blue-900 text-blue-200 border border-blue-700'
-                        : 'bg-emerald-900 text-emerald-200 border border-emerald-700'
-                    }`}
+                          ? 'bg-blue-900 text-blue-200 border border-blue-700'
+                          : 'bg-emerald-900 text-emerald-200 border border-emerald-700'
+                      }`}
                   >
                     {user?.role === 'ADMIN' ? 'ADMIN' : user?.role === 'GOVERNMENT_OFFICER' ? 'OFFICER' : 'FIELD'}
                   </span>
@@ -166,11 +165,10 @@ export function AppLayout({ currentTab, onSelectTab, children }: AppLayoutProps)
                 <button
                   key={item.id}
                   onClick={() => onSelectTab(item.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-xs font-semibold transition-colors text-left ${
-                    active
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-xs font-semibold transition-colors text-left ${active
                       ? 'bg-slate-900 text-white shadow-xs'
                       : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   <span className={active ? 'text-amber-400' : 'text-slate-500'}>{item.icon}</span>
                   <div className="flex-1 min-w-0">
@@ -222,9 +220,8 @@ export function AppLayout({ currentTab, onSelectTab, children }: AppLayoutProps)
                       onSelectTab(item.id);
                       setMobileMenuOpen(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-xs font-semibold ${
-                      currentTab === item.id ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
-                    }`}
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-xs font-semibold ${currentTab === item.id ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
+                      }`}
                   >
                     <span>{item.icon}</span>
                     <span>{item.label}</span>

@@ -34,7 +34,7 @@ export default function LoginPage() {
           🏛️
         </div>
         <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
-          PM GatiShakti • InfraLifecycle
+          PM BoriShakti • InfraLifecycle
         </h1>
         <p className="mt-1 text-xs text-slate-400 max-w-sm mx-auto">
           National Infrastructure Asset Lifecycle & Inventory Management System
